@@ -17,5 +17,8 @@ public:
 	int getKey() { return key; }
 	void setPointer(int p) { pointer = p; }	
 	int getPointer() { return pointer; }
+	bool getIsDeleted() { return isDeleted; }
+	void setIsDeleted(bool del) { isDeleted = del; }
+	void setKey(int k) { key = k; }
 };
 

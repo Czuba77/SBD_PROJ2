@@ -7,5 +7,7 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    DBM dbm;
+	dbm.DBMmain();
+	return 0;
 }

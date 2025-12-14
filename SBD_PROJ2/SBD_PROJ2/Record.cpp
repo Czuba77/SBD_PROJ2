@@ -45,3 +45,4 @@ void Record::writeRecord(std::fstream* f)
 	f->write((char*)&isDeleted, sizeof(bool));
 }
 
+

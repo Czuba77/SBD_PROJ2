@@ -1,7 +1,10 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "DBM.h"
+#include <fstream>
 
+#pragma pack(push, 1)
 struct EntryIF {
 	int key; 
 	int pageNumber; 
@@ -19,20 +22,21 @@ struct EntryIF {
 
 	void readEntry(std::fstream* f)
 	{
-		f->read((char*)key, sizeof(int));
-		f->read((char*)pageNumber, sizeof(int));
-		f->read((char*)pageOffset, sizeof(int));
-		f->read((char*)&padding, R_sizeOfRecord - (3 * sizeof(int)));
+		f->read((char*)&key, sizeof(int));
+		f->read((char*)&pageNumber, sizeof(int));
+		f->read((char*)&pageOffset, sizeof(int));
+		f->read((char*)padding, R_sizeOfRecord - (3 * sizeof(int)));
 	}
 
 	void writeRecord(std::fstream* f)
 	{
-		f->write((char*)key, sizeof(int));
-		f->write((char*)pageNumber, sizeof(int));
-		f->write((char*)pageOffset, sizeof(int));
-		f->write((char*)&padding, R_sizeOfRecord - (3 * sizeof(int)));
+		f->write((char*)&key, sizeof(int));
+		f->write((char*)&pageNumber, sizeof(int));
+		f->write((char*)&pageOffset, sizeof(int));
+		f->write((char*)padding, R_sizeOfRecord - (3 * sizeof(int)));
 	}
 };
+#pragma pack(pop)
 
 
 class DBM;
